@@ -10,7 +10,10 @@ define [
     defaults: {}
 
     initialize: ->
-        console.debug "LinkModel:initialize"
+      console.debug "LinkModel:initialize"
+      # `@on "error"` gets trigger on `set` and `save` if the validation fails.
+      @on "error", (model, error) ->
+        console.debug error
 
     # regex copied from http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
     validate: (attrs) ->

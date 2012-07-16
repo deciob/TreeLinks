@@ -38,27 +38,28 @@ define [
 
     updateCollections: (data) ->
       link = @updateModels(data)
-      # `link.save()` will not work if called before `linksCollection.add(link)`
-      linksCollection.add(link)
-      link.save()
-
+      console.log 'link', link
+      if link
+        # `link.save()` will not work if called before `linksCollection.add(link)`
+        linksCollection.add(link)
+        link.save()
 
     updateModels: (data) ->
       tag_list = data.tags.split ","
       tags = new TagModel(name: t.name) for t in data.tags
       link = new LinkModel( name: data.name, url: data.url, tags: tag_list )
-      link.on( "error", @showError, @ )
-      link
+      #link.on( "error", @showError, @ )
+      valid_link = link.isValid()
+      if valid_link
+        return link
+      else @showError(link, "This is not a correct url!")
       
-
     renderLinksCollection: (collection) ->
       console.debug "AddLinksView:renderLinksCollection"
       mediator.trigger('add:links_collection', collection)
 
-
     showError: (model, error) ->
       console.debug "AddLinksView:showError -> #{error}"
-
 
   )
 

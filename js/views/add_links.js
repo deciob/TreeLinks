@@ -30,11 +30,14 @@ define(["jquery", "underscore", "backbone", "syphon", "mediator", "models/link",
     updateCollections: function(data) {
       var link;
       link = this.updateModels(data);
-      linksCollection.add(link);
-      return link.save();
+      console.log('link', link);
+      if (link) {
+        linksCollection.add(link);
+        return link.save();
+      }
     },
     updateModels: function(data) {
-      var link, t, tag_list, tags, _i, _len, _ref;
+      var link, t, tag_list, tags, valid_link, _i, _len, _ref;
       tag_list = data.tags.split(",");
       _ref = data.tags;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -48,8 +51,12 @@ define(["jquery", "underscore", "backbone", "syphon", "mediator", "models/link",
         url: data.url,
         tags: tag_list
       });
-      link.on("error", this.showError, this);
-      return link;
+      valid_link = link.isValid();
+      if (valid_link) {
+        return link;
+      } else {
+        return this.showError(link, "This is not a correct url!");
+      }
     },
     renderLinksCollection: function(collection) {
       console.debug("AddLinksView:renderLinksCollection");
