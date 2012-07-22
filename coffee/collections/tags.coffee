@@ -14,7 +14,8 @@ define [
 
     initialize: ->
 
+
   )
 
   
-  new TagsCollection
+  TagsCollection

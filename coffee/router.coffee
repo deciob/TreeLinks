@@ -3,9 +3,9 @@ define [
   "underscore", 
   "backbone",
   "views/render_links", 
-  "views/add_links", 
-  "views/add_tags"
-], ($, _, Backbone, renderLinksView, addLinksView, addTagsView) ->
+  "views/render_tags", 
+  "views/add_links"
+], ($, _, Backbone, renderLinksView, renderTags, addLinksView) ->
 
 
   AppRouter = Backbone.Router.extend(
@@ -16,8 +16,9 @@ define [
 
     defaultRoute: (actions) ->
       console.debug "AppRouter:defaultRoute"
+      #renderTags
       addLinksView.render()
-      addTagsView.render()
+      #addTagsView.render()
   )
 
 

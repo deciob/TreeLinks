@@ -7,5 +7,5 @@ define(["jquery", "underscore", "backbone", "local_storage", "models/tag"], func
     localStorage: new Backbone.LocalStorage("tags-backbone"),
     initialize: function() {}
   });
-  return new TagsCollection;
+  return TagsCollection;
 });

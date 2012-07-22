@@ -9,5 +9,5 @@ define(["jquery", "underscore", "backbone", "local_storage", "models/link"], fun
       return console.debug("LinksCollection:initialize, localStorage: " + localStorage);
     }
   });
-  return new LinksCollection();
+  return LinksCollection;
 });

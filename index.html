@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <title>Learning Backbone application</title>
 <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="css/ui/jquery.ui.all.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -23,8 +25,8 @@
   <!--<div class="span6" id="add_tags"></div>-->
 </div>
 <div class="row">
-  <div class="span6" id="link-collections">collections</div>
-  <div class="span6" id="link-models">models</div>
+  <div class="span6" id="link-collections"></div>
+  <div class="span6" id="tags-collections"></div>
 </div>
 
 
@@ -44,7 +46,8 @@ requirejs.config({
     syphon: 'vendor/backbone.syphon',
     handlebars: 'vendor/handlebars-1.0.0.beta.6',
     text: 'vendor/require-text-2.0.0',
-    bootstrap_modal: 'vendor/bootstrap'  // symlink
+    bootstrap_modal: 'vendor/bootstrap',  // symlink
+    ui: 'vendor/jquery.ui.min'
     //chaplin: 'vendor/chaplin'
   },
   // Underscore and Backbone are not AMD-capable per default,
@@ -68,6 +71,10 @@ requirejs.config({
     bootstrap_modal: {
       deps: ['jquery'],
       exports: 'Modal'
+    },
+    ui: {
+      deps: ['jquery'],
+      exports: 'jquery'
     }
   }
   // For easier development, disable browser caching

@@ -5,7 +5,9 @@ define(["underscore", "backbone", "local_storage"], function(_, Backbone, LocalS
   LinkModel = Backbone.Model.extend({
     defaults: {},
     initialize: function() {
-      return console.debug("LinkModel:initialize");
+      return this.on("error", function(model, error) {
+        return console.debug(error);
+      });
     },
     validate: function(attrs) {
       var urlregex;

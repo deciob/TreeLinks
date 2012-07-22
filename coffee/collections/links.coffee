@@ -19,4 +19,4 @@ define [
   )
 
 
-  new LinksCollection()
+  LinksCollection

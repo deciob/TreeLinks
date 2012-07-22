@@ -10,7 +10,7 @@ define [
     defaults: {}
 
     initialize: ->
-      console.debug "LinkModel:initialize"
+      #console.debug "LinkModel:initialize"
       # `@on "error"` gets trigger on `set` and `save` if the validation fails.
       @on "error", (model, error) ->
         console.debug error
